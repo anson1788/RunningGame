@@ -15,6 +15,6 @@ public class gameController : gameControllerGui
     }
     void OnGUI(){
         onGUICustom();
-        print("gameController!");
+        //print("gameController!");
     }
 }

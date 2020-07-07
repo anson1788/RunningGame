@@ -20,7 +20,7 @@ public class gameControllerGui : MonoBehaviour
     }
 
     public void onGUICustom(){
-        print("gameControllerGUI!");
+        //print("gameControllerGUI!");
     }
 
     public void updateCustom(){
