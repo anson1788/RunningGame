@@ -28,18 +28,62 @@ public class envHoster : envHosterVarBasic
         for(int i=0;i<gameSingletonObj.roadPreview;i++){
             GameObject floor = (GameObject)Instantiate(floorPref, new Vector3(0, 0, i*32), Quaternion.identity);
             floor.name = "floor_"+i;
-            Bounds b = gameSingletonObj.getBoundFromComplexObj(floor);
-            print("sizeZ "+ i + " : "+b.size.z); 
+           //Bounds b = gameSingletonObj.getBoundFromComplexObj(floor);
             gameSingletonObj.screenFloorList.Add(floor);
-            GameObject plane = (GameObject)Instantiate(planePref, new Vector3(0, -0.01f, i*32), Quaternion.identity);
-            gameSingletonObj.screenFloorPlaneList.Add(plane);
+            GameObject planeObj = (GameObject)Instantiate(planePref, new Vector3(0, -0.01f, i*32), Quaternion.identity);
+            planeObj.name = "plane"+i;
+            gameSingletonObj.screenFloorPlaneList.Add(planeObj);
         }
+        int number = gameSingletonObj.screenFloorList.Count;
+        GameObject lastItem = gameSingletonObj.screenFloorList[number - 1];
+        Bounds lastObjBounds = gameSingletonObj.getBoundFromComplexObj(lastItem);
+        float floorEnd = 0.0f;
+        floorEnd = lastObjBounds.center.z + lastObjBounds.size.z/2;
+        print("print last "+floorEnd);
 
+        float newItemCenterZ = 0;
+        int ItemNumber = gameSingletonObj.buildingTypeList.Count;
+        while(true){
+            int rIdx = Random.Range(0, ItemNumber-1);
+            GameObject pref = gameSingletonObj.buildingTypeList[rIdx];
+            Bounds prefBounds = gameSingletonObj.getBoundFromComplexObj(pref);
+            if(newItemCenterZ!=0){
+                newItemCenterZ = newItemCenterZ + prefBounds.size.z/2;
+            }
+            float xPos =  prefBounds.size.x/2 + lastObjBounds.center.x+lastObjBounds.size.x/2;
+            GameObject building = (GameObject)Instantiate(pref, new Vector3(-xPos, 0, newItemCenterZ), Quaternion.identity);
+            newItemCenterZ = newItemCenterZ + prefBounds.size.z/2;
+            if(newItemCenterZ>floorEnd){
+                break;
+            }
+        }
+        newItemCenterZ = 0;
+        while(true){
+            int rIdx = Random.Range(0, ItemNumber-1);
+            GameObject pref = gameSingletonObj.buildingTypeList[rIdx];
+            //pref.transform.Rotate(0, 180, 0);
+            //pref.transform.rotation = t;
+
+            Bounds prefBounds = gameSingletonObj.getBoundFromComplexObj(pref);
+            if(newItemCenterZ!=0){
+                newItemCenterZ = newItemCenterZ + prefBounds.size.z/2;
+            }
+            float xPos =  prefBounds.size.x/2 + lastObjBounds.center.x+lastObjBounds.size.x/2;
+            
+            GameObject building = (GameObject)Instantiate(pref, new Vector3(xPos, 0, newItemCenterZ), Quaternion.identity);
+            building.transform.Rotate(0, 180, 0);
+            newItemCenterZ = newItemCenterZ + prefBounds.size.z/2;
+            if(newItemCenterZ>floorEnd){
+                break;
+            }
+        }
+        print("complete");
+        /*
         float pos = 32f/32.1f;
         pos = pos * 10f;
         pos = pos;
         GameObject floorA = (GameObject)Instantiate(floorPref, new Vector3(pos, 0, 0), Quaternion.identity);
-       
+        */
         yield return 0;
     }
   
