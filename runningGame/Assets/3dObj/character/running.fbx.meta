@@ -1,11 +1,8 @@
 fileFormatVersion: 2
-guid: 28aeee85ff6051e459a615a40583bc01
+guid: 26935dfed52ce4b93b733fe738e3c3c9
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
-  - first:
-      74: 7238280004761517075
-    second: Armature|jump
   - first:
       74: 4738648581838305083
     second: Armature|running
@@ -19,7 +16,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 1
+    optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
