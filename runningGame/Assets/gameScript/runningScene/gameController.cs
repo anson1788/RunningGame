@@ -6,16 +6,18 @@ public class gameController : gameControllerGui
 {
    // Start is called before the first frame update 
     public GameObject character;
+    public GameObject characterGrp;
     void Start(){
-         
+          Application.targetFrameRate = 30;
+          
    }
  
     // Update is called once per frame
-    void Update()
+    void Update ()
     {
         if (Input.GetKeyDown("space"))
         {
-             character.GetComponent<Animator>().Play("Armature|jump");
+             clickAction();
         }
         /*
         RuntimeAnimatorController  ctrller = character.GetComponent<Animator>().runtimeAnimatorController;
@@ -30,7 +32,7 @@ public class gameController : gameControllerGui
         {
             if (touch.phase == TouchPhase.Began)
             {
-                       character.GetComponent<Animator>().Play("Armature|jump");
+                clickAction();
             }
         }
         updateCustom();
@@ -38,5 +40,12 @@ public class gameController : gameControllerGui
     void OnGUI(){
         onGUICustom();
         //print("gameController!");
+    }
+
+    void clickAction(){
+        if(character.transform.position.y<1){
+            character.GetComponent<Animator>().Play("Armature|jump");
+            character.GetComponent<Rigidbody>().AddForce(0, 500, 0, ForceMode.Force);
+        }
     }
 }
