@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 26935dfed52ce4b93b733fe738e3c3c9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.18
+      value: 7.444
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 26935dfed52ce4b93b733fe738e3c3c9,
         type: 3}
@@ -401,6 +401,12 @@ MonoBehaviour:
   - {fileID: 8943975697662688191, guid: 0ca598d8c079246549bafc9f93013b56, type: 3}
   screenFloorList: []
   screenFloorPlaneList: []
+--- !u!1 &766117724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 26935dfed52ce4b93b733fe738e3c3c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 120650537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1005030350
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +417,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1005030353}
   - component: {fileID: 1005030352}
-  - component: {fileID: 1005030351}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -419,14 +424,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1005030351
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005030350}
-  m_Enabled: 1
 --- !u!20 &1005030352
 Camera:
   m_ObjectHideFlags: 0
@@ -477,13 +474,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005030350}
-  m_LocalRotation: {x: 0.000000004808924, y: 0.95386595, z: -0.3002329, w: -0.00000018719173}
-  m_LocalPosition: {x: 0, y: 2.63, z: 12}
+  m_LocalRotation: {x: -0.000000007813134, y: 0.97192556, z: -0.23528872, w: -0.00000018709046}
+  m_LocalPosition: {x: 0, y: 1.83, z: 13.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 13014258}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 34.943, y: 179.99998, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.217001, y: 179.99998, z: 0}
 --- !u!1 &1252026051
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingTxt: {fileID: 1568452530}
+  character: {fileID: 766117724}
 --- !u!1 &1568452528
 GameObject:
   m_ObjectHideFlags: 0

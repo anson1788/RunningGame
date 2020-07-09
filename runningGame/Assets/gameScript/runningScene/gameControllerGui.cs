@@ -8,7 +8,7 @@ public class gameControllerGui : MonoBehaviour
 
     public Text loadingTxt;
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
         
     }
