@@ -45,7 +45,7 @@ public class gameController : gameControllerGui
     }
 
     void clickAction(){
-        if(character.transform.position.y<1){
+        if(character.transform.position.y<3){
             character.GetComponent<Animator>().Play("Armature|jump");
             character.GetComponent<Rigidbody>().AddForce(0, 500, 0, ForceMode.Force);
         }
