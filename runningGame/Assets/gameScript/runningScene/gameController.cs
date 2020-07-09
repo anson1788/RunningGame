@@ -15,6 +15,7 @@ public class gameController : gameControllerGui
     // Update is called once per frame
     void Update ()
     {
+        
         if (Input.GetKeyDown("space"))
         {
              clickAction();
@@ -35,6 +36,7 @@ public class gameController : gameControllerGui
                 clickAction();
             }
         }
+        characterGrp.transform.position += new Vector3(0, 0, 50 * Time.deltaTime);
         updateCustom();
     }
     void OnGUI(){

@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 26935dfed52ce4b93b733fe738e3c3c9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.444
+      value: 6.31
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 26935dfed52ce4b93b733fe738e3c3c9,
         type: 3}
@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96625a640307a4d0dabc4d3b4411c518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadPreview: 4
+  roadPreview: 100
   buildingTypeList:
   - {fileID: 7124909073821841436, guid: 828c799b3f5a741459edbf1de30b1481, type: 3}
   - {fileID: 5366132601174953992, guid: 82332e19295b44699b4c95b51d69aeea, type: 3}
@@ -417,7 +417,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -504,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005030350}
   m_LocalRotation: {x: -0.000000007813134, y: 0.97192556, z: -0.23528872, w: -0.00000018709046}
-  m_LocalPosition: {x: 0, y: 1.83, z: 13.63}
+  m_LocalPosition: {x: 0, y: 2.34, z: 13.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 13014258}
@@ -701,6 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingTxt: {fileID: 1568452530}
   character: {fileID: 766117724}
+  characterGrp: {fileID: 13014257}
 --- !u!1 &1568452528
 GameObject:
   m_ObjectHideFlags: 0
