@@ -401,6 +401,7 @@ MonoBehaviour:
   - {fileID: 8943975697662688191, guid: 0ca598d8c079246549bafc9f93013b56, type: 3}
   screenFloorList: []
   screenFloorPlaneList: []
+  screenCollider: []
 --- !u!1 &766117724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 26935dfed52ce4b93b733fe738e3c3c9,
@@ -477,7 +478,7 @@ Camera:
     width: 0.35
     height: 0.35
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 30
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -924,7 +925,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 150
   field of view: 60
   orthographic: 0
   orthographic size: 5
