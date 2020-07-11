@@ -155,12 +155,7 @@ public class envHoster : envHosterVarBasic
         lastFloorIdx = lastFloorIdx + 8;
         
         print("complete");
-        /*
-        float pos = 32f/32.1f;
-        pos = pos * 10f;
-        pos = pos;
-        GameObject floorA = (GameObject)Instantiate(floorPref, new Vector3(pos, 0, 0), Quaternion.identity);
-        */
+       
         yield return 0;
 
         if(istrigger){
