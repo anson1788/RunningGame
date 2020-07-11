@@ -7,4 +7,6 @@ public class envHosterVarBasic : MonoBehaviour
 
     public GameObject floorPref;
     public GameObject planePref;
+    //public GameObject 
+    public GameObject colliderPref;
 }

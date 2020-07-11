@@ -7,8 +7,10 @@ public class envHoster : envHosterVarBasic
 
     protected gameSingleton gameSingletonObj;
     // Start is called before the first frame update
+    public static envHoster instance;
     void Start()
     {
+       instance = this;
        gameSingletonObj = gameSingleton.instance;
        createBuilding();
     }
@@ -22,20 +24,29 @@ public class envHoster : envHosterVarBasic
     public void createBuilding(){
         StartCoroutine(createFloor());
     }
+    public void colliderBoxEnter(Collider other){
+        print("time close "+other.gameObject.name);
+        StartCoroutine(createFloor());
+    }
 
 
     IEnumerator createFloor(){
+        int idx = gameSingletonObj.screenFloorList.Count;
         for(int i=0;i<gameSingletonObj.roadPreview;i++){
-            GameObject floor = (GameObject)Instantiate(floorPref, new Vector3(0, 0, i*32), Quaternion.identity);
+            GameObject floor = (GameObject)Instantiate(floorPref, new Vector3(0, 0, (idx+i)*32), Quaternion.identity);
             floor.name = "floor_"+i;
            //Bounds b = gameSingletonObj.getBoundFromComplexObj(floor);
             gameSingletonObj.screenFloorList.Add(floor);
-            GameObject planeObj = (GameObject)Instantiate(planePref, new Vector3(0, -0.01f, i*32), Quaternion.identity);
+            GameObject planeObj = (GameObject)Instantiate(planePref, new Vector3(0, -0.01f, (idx+i)*32), Quaternion.identity);
             planeObj.name = "plane"+i;
             gameSingletonObj.screenFloorPlaneList.Add(planeObj);
+            if(i==2){
+                GameObject collider = (GameObject)Instantiate(colliderPref, new Vector3(0, 0, (idx+i)*32), Quaternion.identity);
+                collider.name = "collider"+i;
+            }
         }
-        int number = gameSingletonObj.screenFloorList.Count;
-        GameObject lastItem = gameSingletonObj.screenFloorList[number - 1];
+        idx = gameSingletonObj.screenFloorList.Count;
+        GameObject lastItem = gameSingletonObj.screenFloorList[idx - 1];
         Bounds lastObjBounds = gameSingletonObj.getBoundFromComplexObj(lastItem);
         float floorEnd = 0.0f;
         floorEnd = lastObjBounds.center.z + lastObjBounds.size.z/2;

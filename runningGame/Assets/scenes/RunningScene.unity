@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96625a640307a4d0dabc4d3b4411c518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadPreview: 100
+  roadPreview: 8
   buildingTypeList:
   - {fileID: 7124909073821841436, guid: 828c799b3f5a741459edbf1de30b1481, type: 3}
   - {fileID: 5366132601174953992, guid: 82332e19295b44699b4c95b51d69aeea, type: 3}
@@ -655,6 +655,8 @@ MonoBehaviour:
   floorPref: {fileID: 6956718330298873654, guid: 0e1f759bd1fc24c0e96c7df1fa61d851,
     type: 3}
   planePref: {fileID: 1758266743945068415, guid: 1023a8ed7c3eb40a198646106dd14f66,
+    type: 3}
+  colliderPref: {fileID: 5754060008148591076, guid: ab372b1deabb06249acaa9fac077562c,
     type: 3}
 --- !u!1 &1518900506
 GameObject:
