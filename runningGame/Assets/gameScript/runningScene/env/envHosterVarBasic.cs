@@ -9,4 +9,6 @@ public class envHosterVarBasic : MonoBehaviour
     public GameObject planePref;
     //public GameObject 
     public GameObject colliderPref;
+
+     public GameObject removeColliderPref;
 }

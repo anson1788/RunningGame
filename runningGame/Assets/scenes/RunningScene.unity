@@ -402,6 +402,7 @@ MonoBehaviour:
   screenFloorList: []
   screenFloorPlaneList: []
   screenCollider: []
+  screenColliderRemove: []
 --- !u!1 &766117724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 26935dfed52ce4b93b733fe738e3c3c9,
@@ -657,7 +658,9 @@ MonoBehaviour:
     type: 3}
   planePref: {fileID: 1758266743945068415, guid: 1023a8ed7c3eb40a198646106dd14f66,
     type: 3}
-  colliderPref: {fileID: 5754060008148591076, guid: ab372b1deabb06249acaa9fac077562c,
+  colliderPref: {fileID: 3722795002139808158, guid: ab372b1deabb06249acaa9fac077562c,
+    type: 3}
+  removeColliderPref: {fileID: 338640320990604515, guid: 79851362e905e3344a88a92f5e275bde,
     type: 3}
 --- !u!1 &1518900506
 GameObject:

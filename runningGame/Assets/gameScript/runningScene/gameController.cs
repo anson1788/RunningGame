@@ -12,8 +12,17 @@ public class gameController : gameControllerGui
           
    }
  
+    void Update(){
+        foreach(Touch touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                clickAction();
+            }
+        }
+    }
     // Update is called once per frame
-    void Update ()
+    void FixedUpdate ()
     {
         
         if (Input.GetKeyDown("space"))
@@ -29,26 +38,29 @@ public class gameController : gameControllerGui
         character.GetComponent<Animator>().Play("Armature|jump");
         */
 
-        foreach(Touch touch in Input.touches)
-        {
-            if (touch.phase == TouchPhase.Began)
-            {
-                clickAction();
-            }
+        
+        if(isStart){
+            characterGrp.transform.position += new Vector3(0, 0, 50 * Time.deltaTime);
         }
-        characterGrp.transform.position += new Vector3(0, 0, 50 * Time.deltaTime);
         updateCustom();
     }
+
+    bool isStart = false;
     void OnGUI(){
         onGUICustom();
         //print("gameController!");
     }
 
     void clickAction(){
+          isStart = true;
         if(character.transform.position.y<3){
             character.GetComponent<Animator>().Play("Armature|jump");
             character.GetComponent<Rigidbody>().freezeRotation = true;
-            character.GetComponent<Rigidbody>().AddForce(0, 700, 0, ForceMode.Force);
+            if(character.transform.position.y>0.3){
+                character.GetComponent<Rigidbody>().AddForce(0, 200, 0, ForceMode.Force);
+            }else{
+                character.GetComponent<Rigidbody>().AddForce(0, 700, 0, ForceMode.Force);
+            }
         }
     }
 }

@@ -14,9 +14,10 @@ public class gameSingleton : MonoBehaviour
     public List<GameObject> screenFloorPlaneList = new List<GameObject>();
 
     public List<GameObject> screenCollider = new List<GameObject>();
+      public List<GameObject> screenColliderRemove = new List<GameObject>();
     public List<List<GameObject>> leftBuilding = new List<List<GameObject>>();
     public List<List<GameObject>> rightBuilding = new List<List<GameObject>>();
-    
+
     protected bool isLoading = true;
     // Start is called before the first frame update
     void Start()

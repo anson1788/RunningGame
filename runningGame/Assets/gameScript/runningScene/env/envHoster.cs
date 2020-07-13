@@ -22,7 +22,7 @@ public class envHoster : envHosterVarBasic
     }
 
     public void createBuilding(){
-        StartCoroutine(createFloor(false));
+       createFloor();
     }
 
     public void removeObj(){
@@ -30,50 +30,55 @@ public class envHoster : envHosterVarBasic
     }
     public void colliderBoxEnter(Collider other){
         print("time close "+other.gameObject.name);
-        StartCoroutine(createFloor(true));
-    }
-    
-    IEnumerator removeOutOfCameraObj(){
         GameObject collider = gameSingletonObj.screenCollider[0];
         gameSingletonObj.screenCollider.RemoveAt(0);
         Destroy(collider);
-        yield return 0;
-        int remove = 4;
-        if(lastFloorIdx>10){
-            remove = 6;
-        }
-        for(int i=0;i<remove;i++){
-            GameObject obj = gameSingletonObj.screenFloorList[0];
-            gameSingletonObj.screenFloorList.RemoveAt(0);
-            Destroy(obj);
-            GameObject plane = gameSingletonObj.screenFloorPlaneList[0];
-            gameSingletonObj.screenFloorPlaneList.RemoveAt(0);
-            Destroy(plane);
-
-            List<GameObject> rBuildingList =  gameSingletonObj.rightBuilding[0];
-            for(int j=0;j<rBuildingList.Count;j++){
-                GameObject tmp = rBuildingList[j];
-                Destroy(tmp);
-            }
-            gameSingletonObj.rightBuilding[0].Clear();
-            gameSingletonObj.rightBuilding.RemoveAt(0);
-
-            List<GameObject>  lBuildingList =  gameSingletonObj.leftBuilding[0];
-            for(int j=0;j<lBuildingList.Count;j++){
-                GameObject tmp = lBuildingList[j];
-                Destroy(tmp);
-            }
-            gameSingletonObj.leftBuilding[0].Clear();
-            gameSingletonObj.leftBuilding.RemoveAt(0);
-            yield return 0;
-        }
-
+        createBuilding();
+    }
     
+    public void colliderBoxExist(Collider other){
+        print("time close "+other.gameObject.name);
+        removeOutOfCameraObj();
+    }
+    
+    void removeOutOfCameraObj(){
+          GameObject collider = gameSingletonObj.screenColliderRemove[0];
+            gameSingletonObj.screenColliderRemove.RemoveAt(0);
+            Destroy(collider);
+        if(gameSingletonObj.screenFloorList.Count-10>0){
+            for(int i=0;i<gameSingletonObj.screenFloorList.Count-10;i++){
+                GameObject obj = gameSingletonObj.screenFloorList[0];
+                gameSingletonObj.screenFloorList.RemoveAt(0);
+                Destroy(obj);
+                GameObject plane = gameSingletonObj.screenFloorPlaneList[0];
+                gameSingletonObj.screenFloorPlaneList.RemoveAt(0);
+                Destroy(plane);
+
+                List<GameObject> rBuildingList =  gameSingletonObj.rightBuilding[0];
+                for(int j=0;j<rBuildingList.Count;j++){
+                    GameObject tmp = rBuildingList[j];
+                    Destroy(tmp);
+                }
+                gameSingletonObj.rightBuilding[0].Clear();
+                gameSingletonObj.rightBuilding.RemoveAt(0);
+
+                List<GameObject>  lBuildingList =  gameSingletonObj.leftBuilding[0];
+                for(int j=0;j<lBuildingList.Count;j++){
+                    GameObject tmp = lBuildingList[j];
+                    Destroy(tmp);
+                }
+                gameSingletonObj.leftBuilding[0].Clear();
+                gameSingletonObj.leftBuilding.RemoveAt(0);
+               
+            }
+
+        }
+       
     }
     float lastBuildingRight = 0;
     float lastBuildingLeft = 0;
     float lastFloorIdx = 0;
-    IEnumerator createFloor(bool istrigger){
+    void createFloor(){
         
         for(int i=0;i<8;i++){
             GameObject floor = (GameObject)Instantiate(floorPref, new Vector3(0, 0, (lastFloorIdx+i)*32), Quaternion.identity);
@@ -83,12 +88,16 @@ public class envHoster : envHosterVarBasic
             GameObject planeObj = (GameObject)Instantiate(planePref, new Vector3(0, -0.01f, (lastFloorIdx+i)*32), Quaternion.identity);
             planeObj.name = "plane"+i;
             gameSingletonObj.screenFloorPlaneList.Add(planeObj);
-            if(i==4){
+            if(i==3){
                 GameObject collider = (GameObject)Instantiate(colliderPref, new Vector3(0, 0, (lastFloorIdx+i)*32), Quaternion.identity);
                 collider.name = "collider"+i;
                 gameSingletonObj.screenCollider.Add(collider);
             }
-         
+            if(i==7){
+                GameObject colliderRemove = (GameObject)Instantiate(removeColliderPref, new Vector3(0, 0, (lastFloorIdx+i)*32), Quaternion.identity);
+                colliderRemove.name = "colliderRemove"+i;
+                gameSingletonObj.screenColliderRemove.Add(colliderRemove);
+            }
 
             int idx = gameSingletonObj.screenFloorList.Count;
            // print("floor count :" + idx);
@@ -118,8 +127,9 @@ public class envHoster : envHosterVarBasic
                 if(lastBuildingRight>floorEnd){
                     break;
                 }
-        
-                yield return 0;
+                if(lastFloorIdx>8){
+                  //  yield return 0;
+                }
             }
             gameSingletonObj.rightBuilding.Add(tempList);
         
@@ -144,23 +154,21 @@ public class envHoster : envHosterVarBasic
                 if(lastBuildingLeft>floorEnd){
                     break;
                 }
+                if(lastFloorIdx>8){
+                  //  yield return 0;
+                }
+
                 
-                yield return 0;
             }
              gameSingletonObj.leftBuilding.Add(tempList);
-            yield return 0;
+          //  yield return 0;
 
 
         }
         lastFloorIdx = lastFloorIdx + 8;
         
         print("complete");
-       
-        yield return 0;
-
-        if(istrigger){
-            StartCoroutine(removeOutOfCameraObj());
-        }
+     
     }
   
   
