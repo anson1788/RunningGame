@@ -1,0 +1,9 @@
+"Delailed Urban City"
+   This package contains 99 game objects with game ready prefab.5 atlas used.
+tris of each houses very low below 400.
+Most of the textures are come from CG texture.
+All models are made in 3dx max.
+
+For any information please contact me 
+
+kumfustudio1177@gmail.com
