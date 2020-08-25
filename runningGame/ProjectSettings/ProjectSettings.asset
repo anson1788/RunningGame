@@ -663,7 +663,7 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
     1: CROSS_PLATFORM_INPUT
-    4: CROSS_PLATFORM_INPUT
+    4: CROSS_PLATFORM_INPUT;DREAMTECK_SPLINES
     7: CROSS_PLATFORM_INPUT
     14: 
     17: 

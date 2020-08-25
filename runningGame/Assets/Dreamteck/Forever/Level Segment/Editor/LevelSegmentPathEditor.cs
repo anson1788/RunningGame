@@ -145,6 +145,21 @@ namespace Dreamteck.Forever.Editor
                     modifyWindow = EditorWindow.GetWindow<ModifyWindow>(true);
                     modifyWindow.Init(this);
                 }
+            
+                if (GUILayout.Button("Add Point to current Point"))
+                {
+                    if(selectedPoint!=-1){
+                        Debug.Log("aa = " +selectedPoint);
+                        
+                      
+                        SplineSample result = spline.Evaluate(DMath.Lerp((double)(selectedPoint)/ (spline.points.Length - 1), 1.0, 0.5));
+                        float tangentLength = Mathf.Lerp(Vector3.Distance(spline.points[selectedPoint].position, spline.points[selectedPoint].tangent), Vector3.Distance(spline.points[selectedPoint+1].position, spline.points[selectedPoint+1].tangent), 0.5f);
+                        ArrayUtility.Insert(ref spline.points, selectedPoint+1, new SplinePoint(result.position, result.position - result.forward * tangentLength, result.up, result.size, result.color));
+                        path.InverseTransform();
+                        selectedPoint = selectedPoint+1;
+                    
+                    }
+                }
             }
             EditorGUILayout.EndVertical();
         }
