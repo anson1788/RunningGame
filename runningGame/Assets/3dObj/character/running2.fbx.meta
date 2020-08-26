@@ -20,7 +20,7 @@ ModelImporter:
     second: Armature|headballAction
   - first:
       74: 4738648581838305083
-    second: Armature|running2
+    second: Armature|runningNew
   - first:
       74: 3242091329296864829
     second: Armature|umbrellaAction
@@ -125,11 +125,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|running2
+      name: Armature|runningNew
       takeName: Armature|running
       internalID: 0
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 16.3
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

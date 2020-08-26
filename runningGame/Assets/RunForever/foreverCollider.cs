@@ -20,7 +20,7 @@ public class foreverCollider : MonoBehaviour
     {
         groundPos = transform.localPosition;
         groundHeight = transform.localPosition.y;
-        print("aa" + transform.localPosition.y);
+        //print("aa" + transform.localPosition.y);
         maxJumpHeight = transform.localPosition.y + maxJumpHeight;
     }
 
@@ -31,7 +31,14 @@ public class foreverCollider : MonoBehaviour
           if(inputJump==false){
             inputJump = true;
             StartCoroutine("Jump");
+            GetComponent<Animator>().Play("Armature|jump");
+            GetComponent<Rigidbody>().freezeRotation = true;
           }
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            GetComponent<Animator>().Play("Armature|falling");
+            GetComponent<Rigidbody>().freezeRotation = true;
         }
          if(transform.localPosition == groundPos)
              grounded = true;
@@ -41,15 +48,15 @@ public class foreverCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
       
-       Debug.Log("enter");
+        //Debug.Log("enter");
        //groundPos = transform.position;
        //inputJump = true;
        //StartCoroutine("Jump");
-       print(other.GetComponent<Collider>().gameObject.name);
+       //print(other.GetComponent<Collider>().gameObject.name);
   
     }
     void OnTriggerExit(Collider other){
-       Debug.Log("out");
+       //Debug.Log("out");
     }
 
      IEnumerator Jump(){
